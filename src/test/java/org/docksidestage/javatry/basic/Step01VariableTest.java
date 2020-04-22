@@ -202,7 +202,7 @@ public class Step01VariableTest extends PlainTestCase {
     public void test_variable_writing() {
         // define variables here
         String sea = "mystic";
-        Integer land  = null;
+        Integer land = null;
         log(sea + "," + land + "," + piari); // => mystic,null,0
     }
 
@@ -226,15 +226,15 @@ public class Step01VariableTest extends PlainTestCase {
         log(str); // str
         log(sb); // sb1+string+StringBuilder
         // memo
+        // NOTE もう一つ補足をすると、some_awesome_functionのL236にアサインしたstrはローカルスコープになっていて、
+        //      そしてvoidなので、戻り返せず、更新が反映しなかったのです winkichanwi
         // Stringはimmutableなので更新されない。
         // StringBuilderはmutableなので更新される
         // StringBuilder.append() は複数の型に対応している。
     }
 
-    public void some_awesome_function(String str, StringBuilder sb){
+    public void some_awesome_function(String str, StringBuilder sb) {
         str = str + "+string";
-        sb.append(1)
-            .append("+string")
-            .append(new StringBuilder("+StringBuilder"));
+        sb.append(1).append("+string").append(new StringBuilder("+StringBuilder"));
     }
 }
