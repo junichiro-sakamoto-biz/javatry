@@ -78,9 +78,9 @@ public class Step02IfForTest extends PlainTestCase {
             sea = 2001;
         } else if (land && sea >= 904) {
             sea = 7;
-        } else if (sea >= 903 || land) {
+        } else if (sea >= 903 || land) { // ここと
             sea = 8;
-            if (!land) {
+            if (!land) { // ここと
                 land = true;
             } else if (sea <= 903) {
                 sea++;
@@ -88,10 +88,10 @@ public class Step02IfForTest extends PlainTestCase {
         } else {
             sea = 9;
         }
-        if (land) {
+        if (land) { // ここに入る
             sea = 10;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 10
     }
 
     // ===================================================================================
