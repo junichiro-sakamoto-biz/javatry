@@ -169,9 +169,15 @@ public class Step02IfForTest extends PlainTestCase {
         List<String> stageList = prepareStageList();
         List<String> someList = new ArrayList<>();
         stageList.forEach(stage -> {
-            if (stage.contains("a")) someList.add(stage);
+            // TODO [comment] 現場によりますが、処理が一行でも if 文は中かっこを使ってブロックで書くと決めている現場があったりします。 by subaru (2020/04/22)
+            // 今回はそのような決まりはないので修正等はなしで良いです。
+            if (stage.contains("a"))
+                someList.add(stage);
         });
-        someList.forEach(str->{
+        // TODO 細かいけど str や -> の後にスペースがないのが気になります。 by subaru (2020/04/22)
+        // ちなみにですが、Intellij は command + option + l で体裁整えてくれて便利。
+        // TODO log 出力だけであればワンライナーで書いてしまおう。 by subaru (2020/04/22)
+        someList.forEach(str -> {
             log(str);
         });
         /* result ->
@@ -188,14 +194,22 @@ public class Step02IfForTest extends PlainTestCase {
      * Change foreach statement to List's forEach() (keep result after fix) <br>
      * (foreach文をforEach()メソッドへの置き換えてみましょう (修正前と修正後で実行結果が同じになるように))
      */
+    // TODO [comment] インスタンス変数の定義について by subaru (2020/04/22)
+    // おそらく今回 gaFound と sea をインスタンス変数として宣言したのは、forEach の中で代入できるようにするためということだと思います。
+    // しかしそれを目的にインスタンス変数として定義するということは通常やりません。
+    // 特に今回、これらの変数が他のメソッドから呼び出されるというものでもないのでインスタンス変数として切り出す理由はないかと。
+    // とはいえ、下のコードはこれはこれでシンプルだし、認識した上であえてやっているということであれば無視してください。
     boolean gaFound = false;
     String sea = null;
     public void test_iffor_refactor_foreach_to_forEach() {
         List<String> stageList = prepareStageList();
-        stageList.forEach(stage->{
-            if(stage.startsWith("br")) return;
-            if(!gaFound) sea = stage;
-            if(stage.contains("ga") && !gaFound) gaFound=true;
+        stageList.forEach(stage -> {
+            if (stage.startsWith("br"))
+                return;
+            if (!gaFound)
+                sea = stage;
+            if (stage.contains("ga") && !gaFound)
+                gaFound = true;
         });
         log(sea);
     }
@@ -212,10 +226,12 @@ public class Step02IfForTest extends PlainTestCase {
      */
     public void test_iffor_yourExercise() {
         List<String> stageList = prepareStageList();
-        stageList.forEach(stage->{
-            char[] charArray=stage.toCharArray();
+        stageList.forEach(stage -> {
+            char[] charArray = stage.toCharArray();
             StringBuilder sb = new StringBuilder();
-            for(char c: charArray){ sb.append(c + " "); }
+            for (char c : charArray) {
+                sb.append(c + " ");
+            }
             log(sb);
             log("");
         });
