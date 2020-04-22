@@ -81,6 +81,9 @@ public class Step01VariableTest extends PlainTestCase {
     // ===================================================================================
     //                                                                   Instance Variable
     //                                                                   =================
+    // memo 小文字で始まる型はprimitive型、大文字で始まるものはnon-primitive
+    // primitive型は言語仕様で初期化された時の値が決まる、non-primitiveは明示的に初期化しない限りnullがはいる。
+    //
     private String instanceBroadway;
     private int instanceDockside;
     private Integer instanceHangar;
@@ -110,9 +113,10 @@ public class Step01VariableTest extends PlainTestCase {
     public void test_variable_instance_variable_via_method() {
         instanceBroadway = "bbb";
         instanceMagiclamp = "magician";
-        helpInstanceVariableViaMethod(instanceMagiclamp);
+        helpInstanceVariableViaMethod(instanceMagiclamp); // instanceMagiclampは更新されない
         String sea = instanceBroadway + "|" + instanceDockside + "|" + instanceHangar + "|" + instanceMagiclamp;
-        log(sea); // your answer? => 
+        // sea = "bigband" + "|" + 1 + "|" + null + "|" + "magician"
+        log(sea); // your answer? => bignand|1|null|magician
     }
 
     private void helpInstanceVariableViaMethod(String instanceMagiclamp) {
