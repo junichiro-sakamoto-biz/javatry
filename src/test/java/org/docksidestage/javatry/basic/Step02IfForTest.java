@@ -188,14 +188,16 @@ public class Step02IfForTest extends PlainTestCase {
      * Change foreach statement to List's forEach() (keep result after fix) <br>
      * (foreach文をforEach()メソッドへの置き換えてみましょう (修正前と修正後で実行結果が同じになるように))
      */
+    boolean gaFound = false;
+    String sea = null;
     public void test_iffor_refactor_foreach_to_forEach() {
-        // memo gaを含む文字列が2回来た時の挙動の再現の仕方がわからなかった。
         List<String> stageList = prepareStageList();
-        String sea = null;
         stageList.forEach(stage->{
             if(stage.startsWith("br")) return;
-            if(stage.contains("ga")) log(stage);
+            if(!gaFound) sea = stage;
+            if(stage.contains("ga") && !gaFound) gaFound=true;
         });
+        log(sea);
     }
 
     /**
