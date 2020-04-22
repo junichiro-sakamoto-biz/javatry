@@ -150,7 +150,11 @@ public class Step02IfForTest extends PlainTestCase {
             }
         });
         String sea = sb.toString();
-        log(sea); // your answer? => 
+        log(sea); // your answer? => dockside
+        // broarway: sb.length()>0を満たさないがiを含まないので何もしない
+        // dockside: sb.length() == 0 かつiを含むのでsbにappendされる
+        // hangar: sb.length() > 0を満たすのでreturn
+        // magiclamp: sb.length() > 0を満たすのでreturn
     }
 
     // ===================================================================================
