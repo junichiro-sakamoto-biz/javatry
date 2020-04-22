@@ -62,27 +62,27 @@ public class Step03DataTypeTest extends PlainTestCase {
     //                                                                           =========
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_datatype_primitive() {
-        byte sea = 127; // max
-        short land = 32767; // max
-        int piari = 2147483647; // max
-        long bonvo = 9223372036854775807L; // max
+        byte sea = 127; // max 8bit
+        short land = 32767; // max 16bit
+        int piari = 2147483647; // max 32bit
+        long bonvo = 9223372036854775807L;
         float dstore = 2147483647.1f;
         double amba = 2.3d;
         char miraco = 'a';
         boolean dohotel = miraco == 'a';
-        if (dohotel && dstore >= piari) {
+        if (dohotel && dstore >= piari) { // true && true
             bonvo = sea;
-            land = (short) bonvo;
+            land = (short) bonvo; //(short)127
             bonvo = piari;
-            sea = (byte) land;
-            if (amba == 2.3D) {
-                sea = (byte) amba;
+            sea = (byte) land; //(byte) (short) 127
+            if (amba == 2.3D) { // 2.3d == 2.3D -> true
+                sea = (byte) amba; // (byte)2.3d -> 2
             }
         }
         if (dstore > piari) {
             sea = 0;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 2
     }
 
     // ===================================================================================
