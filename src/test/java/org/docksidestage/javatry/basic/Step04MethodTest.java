@@ -161,6 +161,7 @@ public class Step04MethodTest extends PlainTestCase {
             showSea(sea);
         }
     }
+    // TODO 引数が null だったらどうなるだろうか。そこも考慮して実装してみましょう。（replaceCtoBも同様） by subaru (2020/04/22)
     private String replaceAtoB(String str){
         return str.replace("A", "B");
     }
@@ -173,6 +174,7 @@ public class Step04MethodTest extends PlainTestCase {
         return prefix + ":" + txt;
     }
     private boolean isAvailableLogging(){
+        // TODO [質問] ここのコメントを残しているのは何か理由があるのかな？ by subaru (2020/04/22)
 //        availableLogging = false;
         return availableLogging;
     }
