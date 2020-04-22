@@ -203,13 +203,20 @@ public class Step02IfForTest extends PlainTestCase {
      * (if文for文についてあなたのオリジナルの質問形式のエクササイズを作ってみましょう)
      * <pre>
      * _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-     * your question here (ここにあなたの質問を):
-     * 
+     * stringのlistを文字ことに分割してsocial distanceをはかる
+     *
      * _/_/_/_/_/_/_/_/_/_/
      * </pre>
      */
     public void test_iffor_yourExercise() {
-        // write your code here
+        List<String> stageList = prepareStageList();
+        stageList.forEach(stage->{
+            char[] charArray=stage.toCharArray();
+            StringBuilder sb = new StringBuilder();
+            for(char c: charArray){ sb.append(c + " "); }
+            log(sb);
+            log("");
+        });
     }
 
     // ===================================================================================
