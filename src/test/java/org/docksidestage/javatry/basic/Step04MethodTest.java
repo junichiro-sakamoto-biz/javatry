@@ -152,13 +152,32 @@ public class Step04MethodTest extends PlainTestCase {
      * o showSea(): 一つのString引数、戻り値なし、引数をlog()で表示する
      * </pre>
      */
+    private boolean availableLogging=true;
     public void test_method_making() {
         // comment out after making these methods
-        //String replaced = replaceCtoB(replaceAtoB("ABC"));
-        //String sea = addPrefix("broadway", replaced);
-        //if (isAvailableLogging()) {
-        //    showSea(sea);
-        //}
+        String replaced = replaceCtoB(replaceAtoB("ABC"));
+        String sea = addPrefix("broadway", replaced);
+        if (isAvailableLogging()) {
+            showSea(sea);
+        }
+    }
+    private String replaceAtoB(String str){
+        return str.replace("A", "B");
+    }
+
+    private String replaceCtoB(String str){
+        return str.replace("C", "B");
+    }
+
+    private String addPrefix(String prefix, String txt){
+        return prefix + ":" + txt;
+    }
+    private boolean isAvailableLogging(){
+//        availableLogging = false;
+        return availableLogging;
+    }
+    private void showSea(String str){
+        log("in function showSea: {}",str);
     }
 
     // write methods here
