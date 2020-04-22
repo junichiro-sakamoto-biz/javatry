@@ -34,8 +34,8 @@ public class Step04MethodTest extends PlainTestCase {
      * (メソッド終了時の変数 sea の中身は？)
      */
     public void test_method_call_basic() {
-        String sea = supplySomething();
-        log(sea); // your answer? =>
+        String sea = supplySomething(); // in supply: over
+        log(sea); // your answer? => over
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
