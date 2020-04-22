@@ -96,7 +96,8 @@ public class Step01VariableTest extends PlainTestCase {
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_variable_instance_variable_default_int() {
         int sea = instanceDockside;
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 0
+        // primitive typeであるintの場合は0が初期値として入っている
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
