@@ -73,9 +73,9 @@ public class Step01VariableTest extends PlainTestCase {
         BigDecimal sea = new BigDecimal(94);
         BigDecimal land = new BigDecimal(415);
         sea = land;
-        sea = land.add(new BigDecimal(1));
-        sea.add(new BigDecimal(1));
-        log(sea); // your answer? => 
+        sea = land.add(new BigDecimal(1)); // sea = 415 + 1
+        sea.add(new BigDecimal(1)); // sea = 416+1? -> immutable出戻り値をassignしていないため更新されず416のままになる
+        log(sea); // your answer? =>  416
     }
 
     // ===================================================================================
