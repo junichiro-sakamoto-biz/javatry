@@ -40,10 +40,12 @@ public class Step04MethodTest extends PlainTestCase {
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_method_call_many() {
-        String sea = functionSomething("mystic");
+        String sea = functionSomething("mystic"); // in function: mysmys
         consumeSomething(supplySomething());
-        runnableSomething();
-        log(sea); // your answer? => 
+            // in supply: over
+            // in consume: mystic
+        runnableSomething(); // in runnable: outofshadow
+        log(sea); // your answer? =>  mysmys
     }
 
     private String functionSomething(String name) {
