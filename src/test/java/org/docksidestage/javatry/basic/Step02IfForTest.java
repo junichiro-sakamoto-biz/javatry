@@ -117,7 +117,8 @@ public class Step02IfForTest extends PlainTestCase {
         for (String stage : stageList) {
             sea = stage;
         }
-        log(sea); // your answer? => 
+        // stageListの要素を順々にseaに入れる。seaにはstageListの最後の要素が残る.
+        log(sea); // your answer? => magiclamp
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
