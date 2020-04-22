@@ -214,12 +214,27 @@ public class Step01VariableTest extends PlainTestCase {
      * (変数についてあなたのオリジナルの質問形式のエクササイズを作ってみましょう)
      * <pre>
      * _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-     * your question here (ここにあなたの質問を):
-     * 
+     * test_variable_yourExerciseが終了したときのそれぞれの値を考える。
+     *
      * _/_/_/_/_/_/_/_/_/_/
      * </pre>
      */
     public void test_variable_yourExercise() {
-        // write your code here
+        String str = "str";
+        StringBuilder sb = new StringBuilder("sb");
+        some_awesome_function(str, sb);
+        log(str); // str
+        log(sb); // sb1+string+StringBuilder
+        // memo
+        // Stringはimmutableなので更新されない。
+        // StringBuilderはmutableなので更新される
+        // StringBuilder.append() は複数の型に対応している。
+    }
+
+    public void some_awesome_function(String str, StringBuilder sb){
+        str = str + "+string";
+        sb.append(1)
+            .append("+string")
+            .append(new StringBuilder("+StringBuilder"));
     }
 }
