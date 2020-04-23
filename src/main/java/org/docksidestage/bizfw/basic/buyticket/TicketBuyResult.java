@@ -7,7 +7,8 @@ public class TicketBuyResult {
     private int change;
 
     public TicketBuyResult(int money, int change, int type) {
-        // TODO sakamoto ここはMultidayTicketを生成するがOneDayPassportを買う場合もMultidayTicketですか？ by winkichanwi
+        // done sakamoto ここはMultidayTicketを生成するがOneDayPassportを買う場合もMultidayTicketですか？ by winkichanwi
+        // Ticketを抽象クラスにした意味がなくなってしまいますが、まとめてしまった方がシンプルなためこうしたいと思ってます。
         this.ticket = new MultipledayTicket(money, type);
         this.change = change;
     }
