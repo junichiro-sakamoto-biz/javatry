@@ -109,13 +109,13 @@ public class Step05ClassTest extends PlainTestCase {
      */
     public void test_class_letsFix_makeMethod_twoday() {
         // comment out after making the method
-        //TicketBooth booth = new TicketBooth();
-        //int money = 14000;
-        //int change = booth.buyTwoDayPassport(money);
-        //Integer sea = booth.getSalesProceeds() + change;
-        //log(sea); // should be same as money
-
-        // and show two-day passport quantity here
+        TicketBooth booth = new TicketBooth();
+        int money = 14000;
+        TicketBuyResult tbr = booth.buyTwoDayPassport(money);
+        int change = tbr.getChange();
+        Integer sea = booth.getSalesProceeds() + change;
+        log(sea); // should be same as money
+        log(booth.getQuantity()); // result -> 8
     }
 
     /**
