@@ -161,12 +161,18 @@ public class Step04MethodTest extends PlainTestCase {
             showSea(sea);
         }
     }
-    // TODO 引数が null だったらどうなるだろうか。そこも考慮して実装してみましょう。（replaceCtoBも同様） by subaru (2020/04/22)
+    // TODO done 引数が null だったらどうなるだろうか。そこも考慮して実装してみましょう。（replaceCtoBも同様） by subaru (2020/04/22)
     private String replaceAtoB(String str){
+        if(str==null){
+            throw new RuntimeException("null pointer");
+        }
         return str.replace("A", "B");
     }
 
     private String replaceCtoB(String str){
+        if(str==null){
+            throw new RuntimeException("null pointer");
+        }
         return str.replace("C", "B");
     }
 
@@ -174,8 +180,7 @@ public class Step04MethodTest extends PlainTestCase {
         return prefix + ":" + txt;
     }
     private boolean isAvailableLogging(){
-        // TODO [質問] ここのコメントを残しているのは何か理由があるのかな？ by subaru (2020/04/22)
-//        availableLogging = false;
+        // TODO done [質問] ここのコメントを残しているのは何か理由があるのかな？ by subaru (2020/04/22)
         return availableLogging;
     }
     private void showSea(String str){

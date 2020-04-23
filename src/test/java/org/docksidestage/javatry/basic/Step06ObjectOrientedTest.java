@@ -15,14 +15,11 @@
  */
 package org.docksidestage.javatry.basic;
 
+import org.docksidestage.bizfw.basic.buyticket.MultipledayTicket;
 import org.docksidestage.bizfw.basic.buyticket.OnedayTicket;
 import org.docksidestage.bizfw.basic.buyticket.Ticket;
 import org.docksidestage.bizfw.basic.buyticket.TicketBooth;
-import org.docksidestage.bizfw.basic.objanimal.Animal;
-import org.docksidestage.bizfw.basic.objanimal.BarkedSound;
-import org.docksidestage.bizfw.basic.objanimal.Cat;
-import org.docksidestage.bizfw.basic.objanimal.Dog;
-import org.docksidestage.bizfw.basic.objanimal.Zombie;
+import org.docksidestage.bizfw.basic.objanimal.*;
 import org.docksidestage.bizfw.basic.objanimal.loud.AlarmClock;
 import org.docksidestage.bizfw.basic.objanimal.loud.Loudable;
 import org.docksidestage.bizfw.basic.objanimal.runner.FastRunner;
@@ -133,9 +130,10 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         // #fixme you if step05 has been finished, you can use this code by jflute (2019/06/15)
         // _/_/_/_/_/_/_/_/_/_/
         //Ticket ticket = booth.buyOneDayPassport(10000);
-        booth.buyOneDayPassport(10000); // as temporary, remove if you finished steo05
-//        Ticket ticket = new Ticket(7400); // also here
-        Ticket ticket = new OnedayTicket(74200);
+//        booth.buyOneDayPassport(10000); // as temporary, remove if you finished steo05
+        Ticket ticket = new MultipledayTicket(7400, 1); // also here
+//        Ticket ticket = booth.buyOneDayPassport(10000); // also here
+        // TODO done ここコンパイルできないから治してあげましたが、本来はコンパイルできる状態でpushするべき。もしくはTODO残す winkichanwi
 
         // *buyOneDayPassport() has this process:
         //if (quantity <= 0) {
@@ -181,7 +179,7 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
     }
 
     private void doShowTicketBooth(TicketBooth booth) {
-        log("Ticket Booth: quantity={}, salesProceeds={}", booth.getQuantity(), booth.getSalesProceeds());
+        log("Ticket Booth: quantity={}, salesProceeds={}", booth.getQuantity(1), booth.getSalesProceeds());
     }
 
     private void doShowYourTicket(Ticket ticket) {

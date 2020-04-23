@@ -19,23 +19,31 @@ package org.docksidestage.bizfw.basic.buyticket;
  * @author jflute
  */
 
-import org.docksidestage.bizfw.basic.buyticket.OnedayTicket;
-import org.docksidestage.bizfw.basic.buyticket.TicketBuyResult;
-
 public class TicketBooth {
 
     // ===================================================================================
     //                                                                          Definition
     //                                                                          ==========
-    private static final int MAX_QUANTITY = 10;
-    private static final int ONE_DAY_PRICE = 7400; // when 2019/06/15
-    private static final int TWO_DAY_PRICE = 13200;
-    private static final int FOUR_DAY_PRICE = 22400;
+    private static final int[] prices = {
+            0,
+            7400,
+            13200,
+            0,
+            22400
+    };
 
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
-    private int quantity = MAX_QUANTITY;
+    // TODO done quantity はoneDayPassport、twoDayPassport、fourDayPassportも共有しているという意味ですか？ winkichanwi
+    private static final int MAX_QUANTITY = 10;
+    private int[] quantitys = {
+            0,
+            MAX_QUANTITY,
+            MAX_QUANTITY,
+            0,
+            MAX_QUANTITY
+    };
     private Integer salesProceeds;
 
     // ===================================================================================
@@ -47,50 +55,25 @@ public class TicketBooth {
     // ===================================================================================
     //                                                                          Buy Ticket
     //                                                                          ==========
-    public Ticket buyOneDayPassport(int handedMoney) {
-        if (quantity <= 0) {
+    // TODO done buyOneDayPassport、buyTwoDayPassport、buyFourDayPassportの処理似ているところありますでしょうか？あるなら共通化できないのでしょう？ winkichanwi
+    public TicketBuyResult buyPassport(int handedMoney, int type){
+        if(!(type == 1 || type == 2 || type ==4)){
+            throw new RuntimeException("ticket type not supported");
+        }
+        int price = prices[type];
+        if(quantitys[type] <= 0){
             throw new TicketSoldOutException("Sold out");
         }
-        if (handedMoney < ONE_DAY_PRICE) {
+        if (handedMoney < price) {
             throw new TicketShortMoneyException("Short money: " + handedMoney);
         }
-        --quantity;
-        if (salesProceeds != null) {
-            salesProceeds = salesProceeds + ONE_DAY_PRICE;
-        } else {
-            salesProceeds = ONE_DAY_PRICE;
+        quantitys[type]--;
+        if(salesProceeds != null){
+            salesProceeds += price;
+        }else{
+            salesProceeds = price;
         }
-        return new OnedayTicket(7400);
-    }
-    public TicketBuyResult buyTwoDayPassport(int handedMoney) {
-        if (quantity <= 0) {
-            throw new TicketSoldOutException("Sold out");
-        }
-        if (handedMoney < TWO_DAY_PRICE) {
-            throw new TicketShortMoneyException("Short money: " + handedMoney);
-        }
-        quantity -= 2;
-        if (salesProceeds != null) {
-            salesProceeds = salesProceeds + TWO_DAY_PRICE;
-        } else {
-            salesProceeds = TWO_DAY_PRICE;
-        }
-        return new TicketBuyResult(TWO_DAY_PRICE, handedMoney - TWO_DAY_PRICE, 2);
-    }
-    public TicketBuyResult buyFourDayPassport(int handedMoney) {
-        if (quantity <= 0) {
-            throw new TicketSoldOutException("Sold out");
-        }
-        if (handedMoney < FOUR_DAY_PRICE) {
-            throw new TicketShortMoneyException("Short money: " + handedMoney);
-        }
-        quantity -= 4;
-        if (salesProceeds != null) {
-            salesProceeds = salesProceeds + FOUR_DAY_PRICE;
-        } else {
-            salesProceeds = FOUR_DAY_PRICE;
-        }
-        return new TicketBuyResult(FOUR_DAY_PRICE, handedMoney - FOUR_DAY_PRICE, 4);
+        return new TicketBuyResult(price, handedMoney - price, type);
     }
     public static class TicketSoldOutException extends RuntimeException {
 
@@ -113,8 +96,8 @@ public class TicketBooth {
     // ===================================================================================
     //                                                                            Accessor
     //                                                                            ========
-    public int getQuantity() {
-        return quantity;
+    public int getQuantity(int type) {
+        return quantitys[type];
     }
 
     public Integer getSalesProceeds() {
