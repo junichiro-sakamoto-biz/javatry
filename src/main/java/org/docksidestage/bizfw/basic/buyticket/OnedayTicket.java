@@ -1,5 +1,6 @@
 package org.docksidestage.bizfw.basic.buyticket;
 
+// TODO sakamoto このクラスどこでも使われていない？ by winkichanwi
 public class OnedayTicket implements Ticket {
     int displayPrice;
     boolean alreadyIn = false;

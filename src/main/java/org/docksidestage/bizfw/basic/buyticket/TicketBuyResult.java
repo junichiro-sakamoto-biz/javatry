@@ -7,6 +7,7 @@ public class TicketBuyResult {
     private int change;
 
     public TicketBuyResult(int money, int change, int type) {
+        // TODO sakamoto ここはMultidayTicketを生成するがOneDayPassportを買う場合もMultidayTicketですか？ by winkichanwi
         this.ticket = new MultipledayTicket(money, type);
         this.change = change;
     }

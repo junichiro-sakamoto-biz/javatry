@@ -51,6 +51,7 @@ public class Step05ClassTest extends PlainTestCase {
         Integer sea = booth.getSalesProceeds();
         log(sea); // your answer? => 10000
         // TODO done test_class_letsFix_ticketQuantityReductionで書いた通り以前のエクササイズのanswerの修正を忘れずに winkichanwi
+        // TODO sakamoto ここのyour answerは修正済んでますか？ by winkichanwi
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */

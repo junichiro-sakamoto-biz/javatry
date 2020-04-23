@@ -2,6 +2,7 @@ package org.docksidestage.bizfw.basic.buyticket;
 
 public class MultipledayTicket implements Ticket {
     int displayPrice;
+    // TODO sakamoto intはprimitive typeなので、0と初期化する必要ないよ by winkichanwi
     int ticketType = 0;
     int remainingDay = 0;
 

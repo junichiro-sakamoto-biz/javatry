@@ -35,8 +35,11 @@ public class TicketBooth {
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
-    // TODO done quantity はoneDayPassport、twoDayPassport、fourDayPassportも共有しているという意味ですか？ winkichanwi
+    // done quantity はoneDayPassport、twoDayPassport、fourDayPassportも共有しているという意味ですか？ winkichanwi
+    // TODO sakamoto 修正ありがとうございます。もう一つの質問、返事だけでもいいし、修正してもいいですが、
+    //               100DayPassportが登場したら配列で管理することはどうなるでしょうか by winkichanwi
     private static final int MAX_QUANTITY = 10;
+    // TODO sakamoto nit: 複数はquantities by winkicahnwi
     private int[] quantitys = {
             0,
             MAX_QUANTITY,
@@ -55,7 +58,7 @@ public class TicketBooth {
     // ===================================================================================
     //                                                                          Buy Ticket
     //                                                                          ==========
-    // TODO done buyOneDayPassport、buyTwoDayPassport、buyFourDayPassportの処理似ているところありますでしょうか？あるなら共通化できないのでしょう？ winkichanwi
+    // done buyOneDayPassport、buyTwoDayPassport、buyFourDayPassportの処理似ているところありますでしょうか？あるなら共通化できないのでしょう？ winkichanwi
     public TicketBuyResult buyPassport(int handedMoney, int type){
         if(!(type == 1 || type == 2 || type ==4)){
             throw new RuntimeException("ticket type not supported");

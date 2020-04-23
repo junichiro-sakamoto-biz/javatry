@@ -42,8 +42,8 @@ public class Step04MethodTest extends PlainTestCase {
     public void test_method_call_many() {
         String sea = functionSomething("mystic"); // in function: mysmys
         consumeSomething(supplySomething());
-            // in supply: over
-            // in consume: mystic
+        // in supply: over
+        // in consume: mystic
         runnableSomething(); // in runnable: outofshadow
         log(sea); // your answer? =>  mysmys
     }
@@ -152,7 +152,7 @@ public class Step04MethodTest extends PlainTestCase {
      * o showSea(): 一つのString引数、戻り値なし、引数をlog()で表示する
      * </pre>
      */
-    private boolean availableLogging=true;
+    private boolean availableLogging = true;
     public void test_method_making() {
         // comment out after making these methods
         String replaced = replaceCtoB(replaceAtoB("ABC"));
@@ -162,29 +162,29 @@ public class Step04MethodTest extends PlainTestCase {
         }
     }
     // TODO done 引数が null だったらどうなるだろうか。そこも考慮して実装してみましょう。（replaceCtoBも同様） by subaru (2020/04/22)
-    private String replaceAtoB(String str){
-        if(str==null){
+    private String replaceAtoB(String str) {
+        if (str == null) {
             throw new RuntimeException("null pointer");
         }
         return str.replace("A", "B");
     }
 
-    private String replaceCtoB(String str){
-        if(str==null){
+    private String replaceCtoB(String str) {
+        if (str == null) {
             throw new RuntimeException("null pointer");
         }
         return str.replace("C", "B");
     }
 
-    private String addPrefix(String prefix, String txt){
+    private String addPrefix(String prefix, String txt) {
         return prefix + ":" + txt;
     }
-    private boolean isAvailableLogging(){
+    private boolean isAvailableLogging() {
         // done [質問] ここのコメントを残しているのは何か理由があるのかな？ by subaru (2020/04/22)
         return availableLogging;
     }
-    private void showSea(String str){
-        log("in function showSea: {}",str);
+    private void showSea(String str) {
+        log("in function showSea: {}", str);
     }
 
     // write methods here
