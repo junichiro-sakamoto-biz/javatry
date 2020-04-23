@@ -129,10 +129,10 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
         // #fixme you if step05 has been finished, you can use this code by jflute (2019/06/15)
         // _/_/_/_/_/_/_/_/_/_/
         //Ticket ticket = booth.buyOneDayPassport(10000);
-//        booth.buyOneDayPassport(10000); // as temporary, remove if you finished steo05
+        //        booth.buyOneDayPassport(10000); // as temporary, remove if you finished steo05
         Ticket ticket = new MultipledayTicket(7400, 1); // also here
-//        Ticket ticket = booth.buyOneDayPassport(10000); // also here
-        // TODO done ここコンパイルできないから治してあげましたが、本来はコンパイルできる状態でpushするべき。もしくはTODO残す winkichanwi
+        //        Ticket ticket = booth.buyOneDayPassport(10000); // also here
+        // done ここコンパイルできないから治してあげましたが、本来はコンパイルできる状態でpushするべき。もしくはTODO残す winkichanwi
 
         // *buyOneDayPassport() has this process:
         //if (quantity <= 0) {
