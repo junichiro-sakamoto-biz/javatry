@@ -18,6 +18,10 @@ package org.docksidestage.bizfw.basic.buyticket;
 /**
  * @author jflute
  */
+
+import org.docksidestage.bizfw.basic.buyticket.OnedayTicket;
+import org.docksidestage.bizfw.basic.buyticket.TicketBuyResult;
+
 public class TicketBooth {
 
     // ===================================================================================
@@ -25,6 +29,8 @@ public class TicketBooth {
     //                                                                          ==========
     private static final int MAX_QUANTITY = 10;
     private static final int ONE_DAY_PRICE = 7400; // when 2019/06/15
+    private static final int TWO_DAY_PRICE = 13200;
+    private static final int FOUR_DAY_PRICE = 22400;
 
     // ===================================================================================
     //                                                                           Attribute
@@ -41,21 +47,51 @@ public class TicketBooth {
     // ===================================================================================
     //                                                                          Buy Ticket
     //                                                                          ==========
-    public void buyOneDayPassport(int handedMoney) {
+    public Ticket buyOneDayPassport(int handedMoney) {
         if (quantity <= 0) {
             throw new TicketSoldOutException("Sold out");
         }
-        --quantity;
         if (handedMoney < ONE_DAY_PRICE) {
             throw new TicketShortMoneyException("Short money: " + handedMoney);
         }
+        --quantity;
         if (salesProceeds != null) {
-            salesProceeds = salesProceeds + handedMoney;
+            salesProceeds = salesProceeds + ONE_DAY_PRICE;
         } else {
-            salesProceeds = handedMoney;
+            salesProceeds = ONE_DAY_PRICE;
         }
+        return new OnedayTicket(7400);
     }
-
+    public TicketBuyResult buyTwoDayPassport(int handedMoney) {
+        if (quantity <= 0) {
+            throw new TicketSoldOutException("Sold out");
+        }
+        if (handedMoney < TWO_DAY_PRICE) {
+            throw new TicketShortMoneyException("Short money: " + handedMoney);
+        }
+        quantity -= 2;
+        if (salesProceeds != null) {
+            salesProceeds = salesProceeds + TWO_DAY_PRICE;
+        } else {
+            salesProceeds = TWO_DAY_PRICE;
+        }
+        return new TicketBuyResult(TWO_DAY_PRICE, handedMoney - TWO_DAY_PRICE, 2);
+    }
+    public TicketBuyResult buyFourDayPassport(int handedMoney) {
+        if (quantity <= 0) {
+            throw new TicketSoldOutException("Sold out");
+        }
+        if (handedMoney < FOUR_DAY_PRICE) {
+            throw new TicketShortMoneyException("Short money: " + handedMoney);
+        }
+        quantity -= 4;
+        if (salesProceeds != null) {
+            salesProceeds = salesProceeds + FOUR_DAY_PRICE;
+        } else {
+            salesProceeds = FOUR_DAY_PRICE;
+        }
+        return new TicketBuyResult(FOUR_DAY_PRICE, handedMoney - FOUR_DAY_PRICE, 4);
+    }
     public static class TicketSoldOutException extends RuntimeException {
 
         private static final long serialVersionUID = 1L;
