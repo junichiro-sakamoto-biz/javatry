@@ -161,7 +161,7 @@ public class Step04MethodTest extends PlainTestCase {
             showSea(sea);
         }
     }
-    // TODO done 引数が null だったらどうなるだろうか。そこも考慮して実装してみましょう。（replaceCtoBも同様） by subaru (2020/04/22)
+    // done 引数が null だったらどうなるだろうか。そこも考慮して実装してみましょう。（replaceCtoBも同様） by subaru (2020/04/22)
     private String replaceAtoB(String str) {
         if (str == null) {
             throw new RuntimeException("null pointer");

@@ -49,9 +49,10 @@ public class Step05ClassTest extends PlainTestCase {
         TicketBooth booth = new TicketBooth();
         booth.buyPassport(10000,1);
         Integer sea = booth.getSalesProceeds();
-        log(sea); // your answer? => 10000
-        // TODO done test_class_letsFix_ticketQuantityReductionで書いた通り以前のエクササイズのanswerの修正を忘れずに winkichanwi
-        // TODO sakamoto ここのyour answerは修正済んでますか？ by winkichanwi
+        log(sea); // your answer? => 7400
+        // done test_class_letsFix_ticketQuantityReductionで書いた通り以前のエクササイズのanswerの修正を忘れずに winkichanwi
+        // done sakamoto ここのyour answerは修正済んでますか？ by winkichanwi
+        // MEMO 見逃してました。。。修正しました by sakamoto
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
