@@ -180,7 +180,7 @@ public class Step04MethodTest extends PlainTestCase {
         return prefix + ":" + txt;
     }
     private boolean isAvailableLogging(){
-        // TODO done [質問] ここのコメントを残しているのは何か理由があるのかな？ by subaru (2020/04/22)
+        // done [質問] ここのコメントを残しているのは何か理由があるのかな？ by subaru (2020/04/22)
         return availableLogging;
     }
     private void showSea(String str){
