@@ -62,7 +62,10 @@ public class Step05ClassTest extends PlainTestCase {
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
     public void test_class_howToUse_wrongQuantity() {
         Integer sea = doTest_class_ticket_wrongQuantity();
-        log(sea); // your answer? => 
+        log(sea); // your answer? =>
+        // Failed to buy one-day passport: money=7399
+        // Short money: 7399
+        // 10
     }
 
     private Integer doTest_class_ticket_wrongQuantity() {
