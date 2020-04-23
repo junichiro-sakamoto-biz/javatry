@@ -19,9 +19,6 @@ package org.docksidestage.bizfw.basic.buyticket;
  * @author jflute
  */
 
-import org.docksidestage.bizfw.basic.buyticket.OnedayTicket;
-import org.docksidestage.bizfw.basic.buyticket.TicketBuyResult;
-
 public class TicketBooth {
 
     // ===================================================================================
@@ -35,6 +32,7 @@ public class TicketBooth {
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
+    // TODO quantity はoneDayPassport、twoDayPassport、fourDayPassportも共有しているという意味ですか？ winkichanwi
     private int quantity = MAX_QUANTITY;
     private Integer salesProceeds;
 
@@ -47,6 +45,7 @@ public class TicketBooth {
     // ===================================================================================
     //                                                                          Buy Ticket
     //                                                                          ==========
+    // TODO buyOneDayPassport、buyTwoDayPassport、buyFourDayPassportの処理似ているところありますでしょうか？あるなら共通化できないのでしょう？ winkichanwi
     public Ticket buyOneDayPassport(int handedMoney) {
         if (quantity <= 0) {
             throw new TicketSoldOutException("Sold out");
