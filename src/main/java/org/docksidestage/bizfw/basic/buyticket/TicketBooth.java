@@ -60,21 +60,21 @@ public class TicketBooth {
     //                                                                          Buy Ticket
     //                                                                          ==========
     // done buyOneDayPassport、buyTwoDayPassport、buyFourDayPassportの処理似ているところありますでしょうか？あるなら共通化できないのでしょう？ winkichanwi
-    public TicketBuyResult buyPassport(int handedMoney, int type){
-        if(!(type == 1 || type == 2 || type ==4)){
+    public TicketBuyResult buyPassport(int handedMoney, int type) {
+        if (!(type == 1 || type == 2 || type == 4)) {
             throw new RuntimeException("ticket type not supported");
         }
         int price = prices[type];
-        if(quantities[type] <= 0){
+        if (quantities[type] <= 0) {
             throw new TicketSoldOutException("Sold out");
         }
         if (handedMoney < price) {
             throw new TicketShortMoneyException("Short money: " + handedMoney);
         }
         quantities[type]--;
-        if(salesProceeds != null){
+        if (salesProceeds != null) {
             salesProceeds += price;
-        }else{
+        } else {
             salesProceeds = price;
         }
         return new TicketBuyResult(price, handedMoney - price, type);
