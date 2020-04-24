@@ -24,6 +24,9 @@ public class Step22SearcherTest extends PlainTestCase {
     }
 
     public void test_iteratorSearch_notFound() {
+        log("iterator search");
+        // MEMO wordPoolのinstance生成時に使用しているgetLanguage内部で
+        // "君"をwordMapに追加してしまっているために"君"が検索に引っかかってしまい、正しくエラーが出ない
         assertException(IllegalArgumentException.class, () -> new IteratorSearcher().search("君"));
     }
 
