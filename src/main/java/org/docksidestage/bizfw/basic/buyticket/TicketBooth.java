@@ -40,7 +40,7 @@ public class TicketBooth {
     //               100DayPassportが登場したら配列で管理することはどうなるでしょうか by winkichanwi
     // Hashmapを使おうと思ってます。 by sakamoto
     private static final int MAX_QUANTITY = 10;
-    // TODO sakamoto nit: 複数はquantities by winkicahnwi
+    // done sakamoto nit: 複数はquantities by winkicahnwi
     private int[] quantities = {
             0,
             MAX_QUANTITY,
