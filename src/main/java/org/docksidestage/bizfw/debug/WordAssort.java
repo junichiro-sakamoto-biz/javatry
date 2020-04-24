@@ -17,14 +17,14 @@ public class WordAssort extends WordSorter {
 
     @Override
     public List<Word> sort() {
-        List<Sorter<Word>> sorters = Arrays.asList(new BubbleSorter(words), new SelectionSorter(words), new QuickSorter());
+        List<Sorter<Word>> sorters = Arrays.asList(new BubbleSorter(words), new SelectionSorter(words), new QuickSorter(words));
         int i = new Random().nextInt(sorters.size());
         return sorters.get(i).sort();
     }
 
     @Override
     public List<Word> sort(List<Word> list) {
-        List<Sorter<Word>> sorters = Arrays.asList(new BubbleSorter(), new SelectionSorter(), new QuickSorter(list));
+        List<Sorter<Word>> sorters = Arrays.asList(new BubbleSorter(), new SelectionSorter(), new QuickSorter());
         int i = new Random().nextInt(sorters.size());
         return sorters.get(i).sort(list);
     }
