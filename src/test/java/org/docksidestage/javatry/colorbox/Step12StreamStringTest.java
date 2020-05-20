@@ -64,6 +64,14 @@ public class Step12StreamStringTest extends PlainTestCase {
      * (カラーボックスに入ってる文字列の中で、一番長いものと短いものの差は何文字？)
      */
     public void test_length_findMaxMinDiff() {
+        List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
+        Optional<String> max = colorBoxList.stream()
+                .map(colorBox -> colorBox.getColor().getColorName())
+                .reduce((s1, s2)->{ return s1.length() > s2.length()? s1: s2;});
+        Optional<String> min = colorBoxList.stream()
+                .map(colorBox -> colorBox.getColor().getColorName())
+                .reduce((s1, s2)->{ return s1.length() < s2.length()? s1: s2;});
+        log(max.get().length() - min.get().length()); // => 3
     }
 
     // has small #adjustmemts from ClassicStringTest
