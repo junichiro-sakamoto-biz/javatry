@@ -17,6 +17,7 @@ package org.docksidestage.javatry.colorbox;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.docksidestage.bizfw.colorbox.ColorBox;
 import org.docksidestage.bizfw.colorbox.yours.YourPrivateRoom;
@@ -81,6 +82,21 @@ public class Step12StreamStringTest extends PlainTestCase {
      * (カラーボックスに入ってる値 (文字列以外はtoString()) の中で、二番目に長い文字列は？ (Streamでのソートありで))
      */
     public void test_length_findSecondMax() {
+        List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
+        List<String> collect = colorBoxList.stream()
+                .map(colorBox -> colorBox.getColor().getColorName())
+                .sorted((s1, s2)->s2.length()-s1.length())
+                .distinct()
+                .collect(Collectors.toList());
+        int maxStrLength = collect.get(0).length();
+        int secStrLength = -1;
+        for(String str: collect){
+            if(str.length()==maxStrLength) continue;
+            else if((str.length()!=maxStrLength && secStrLength==-1) || str.length()==secStrLength){
+                secStrLength = str.length();
+                log(str);
+            }
+        }
     }
 
     /**
