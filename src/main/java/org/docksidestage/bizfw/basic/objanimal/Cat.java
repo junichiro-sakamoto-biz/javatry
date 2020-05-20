@@ -59,7 +59,7 @@ public class Cat extends Animal implements FastRunner {
     @Override
     protected void downHitPoint() {
         super.downHitPoint();
-        if (hitPoint % 2 == 0) {
+        if (hitPoint.get() % 2 == 0) {
             super.downHitPoint();
         }
     }

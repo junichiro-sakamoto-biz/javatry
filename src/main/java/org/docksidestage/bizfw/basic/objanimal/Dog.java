@@ -30,6 +30,7 @@ public class Dog extends Animal implements FastRunner {
     //                                                                         ===========
     private static final Logger logger = LoggerFactory.getLogger(Dog.class);
     public Dog() {
+        super();
     }
 
     // ===================================================================================

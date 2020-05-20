@@ -15,8 +15,9 @@
  */
 package org.docksidestage.bizfw.basic.objanimal.think;
 
-import org.docksidestage.bizfw.basic.objanimal.Animal;
 //import org.docksidestage.bizfw.basic.objanimal.think.Thinker;
+
+import org.docksidestage.bizfw.basic.objanimal.Animal;
 
 /**
  * The object for alarm clock(目覚まし時計).
