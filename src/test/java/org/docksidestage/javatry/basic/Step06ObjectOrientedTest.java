@@ -24,6 +24,8 @@ import org.docksidestage.bizfw.basic.objanimal.think.Human;
 import org.docksidestage.bizfw.basic.objanimal.loud.Loudable;
 import org.docksidestage.bizfw.basic.objanimal.runner.FastRunner;
 import org.docksidestage.bizfw.basic.objanimal.think.Thinker;
+import org.docksidestage.javatry.basic.st6.dbms.St6MySql;
+import org.docksidestage.javatry.basic.st6.dbms.St6PostgreSql;
 import org.docksidestage.unit.PlainTestCase;
 
 /**
@@ -338,6 +340,10 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_generalization_extractToAbstract() {
         // your confirmation code here
+        St6MySql st6MySql = new St6MySql();
+        St6PostgreSql st6PostgreSql = new St6PostgreSql();
+        log(st6MySql.buildPagingQuery(5, 10));
+        log(st6PostgreSql.buildPagingQuery(5, 10));
     }
 
     /**
