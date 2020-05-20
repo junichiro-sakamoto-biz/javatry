@@ -13,18 +13,12 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.docksidestage.bizfw.basic.objanimal.loud;
-
-import org.docksidestage.bizfw.basic.objanimal.loud.Loudable;
+package org.docksidestage.bizfw.basic.objanimal.think;
 
 /**
- * The object for alarm clock(目覚まし時計).
  * @author jflute
  */
-public class AlarmClock implements Loudable {
+public interface Thinker{
 
-    @Override
-    public String soundLoudly() {
-        return "jiri jiri jiri---";
-    }
+    String think();
 }
