@@ -15,6 +15,8 @@
  */
 package org.docksidestage.javatry.basic;
 
+import java.lang.invoke.SerializedLambda;
+
 import org.docksidestage.bizfw.basic.buyticket.MultipledayTicket;
 import org.docksidestage.bizfw.basic.buyticket.Ticket;
 import org.docksidestage.bizfw.basic.buyticket.TicketBooth;
@@ -26,6 +28,9 @@ import org.docksidestage.bizfw.basic.objanimal.runner.FastRunner;
 import org.docksidestage.bizfw.basic.objanimal.think.Thinker;
 import org.docksidestage.javatry.basic.st6.dbms.St6MySql;
 import org.docksidestage.javatry.basic.st6.dbms.St6PostgreSql;
+import org.docksidestage.javatry.basic.st6.os.St6OSMac;
+import org.docksidestage.javatry.basic.st6.os.St6OSOldWindows;
+import org.docksidestage.javatry.basic.st6.os.St6OSWindows;
 import org.docksidestage.unit.PlainTestCase;
 
 /**
@@ -352,6 +357,17 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_writing_specialization_extractToConcrete() {
         // your confirmation code here
+        String loginId="test";
+        String relatievPath = "hoge/fuga/piyo";
+
+        St6OSMac st6OSMac = new St6OSMac(loginId);
+        log(st6OSMac.buildUserResourcePath(relatievPath));
+
+        St6OSWindows st6OSWindows = new St6OSWindows(loginId);
+        log(st6OSWindows.buildUserResourcePath(relatievPath));
+
+        St6OSOldWindows st6OSOldWindows = new St6OSOldWindows(loginId);
+        log(st6OSOldWindows.buildUserResourcePath(relatievPath));
     }
 
     // ===================================================================================
