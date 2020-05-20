@@ -308,6 +308,9 @@ public class Step06ObjectOrientedTest extends PlainTestCase {
      */
     public void test_objectOriented_polymorphism_makeConcrete() {
         // your confirmation code here
+        Animal cow = new Cow();
+        boolean sea = cow instanceof FastRunner;
+        log(sea); // => false
     }
 
     /**
