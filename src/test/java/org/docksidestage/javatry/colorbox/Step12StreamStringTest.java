@@ -15,7 +15,9 @@
  */
 package org.docksidestage.javatry.colorbox;
 
+import java.lang.reflect.Array;
 import java.util.Comparator;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -25,6 +27,7 @@ import javax.swing.*;
 
 import org.docksidestage.bizfw.colorbox.ColorBox;
 import org.docksidestage.bizfw.colorbox.yours.YourPrivateRoom;
+import org.docksidestage.javatry.basic.st6.os.St6OSMac;
 import org.docksidestage.unit.PlainTestCase;
 
 /**
@@ -74,13 +77,14 @@ public class Step12StreamStringTest extends PlainTestCase {
      */
     public void test_length_findMaxMinDiff() {
         List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
-        Optional<String> max = colorBoxList.stream()
-                .map(colorBox -> colorBox.getColor().getColorName())
-                .reduce((s1, s2)->{ return s1.length() > s2.length()? s1: s2;});
-        Optional<String> min = colorBoxList.stream()
-                .map(colorBox -> colorBox.getColor().getColorName())
-                .reduce((s1, s2)->{ return s1.length() < s2.length()? s1: s2;});
-        log(max.get().length() - min.get().length()); // => 3
+        IntSummaryStatistics intSummaryStatistics = colorBoxList.stream()
+                .flatMap(colorBox -> colorBox.getSpaceList().stream())
+                .map(space -> space.getContent())
+                .filter(obj -> obj instanceof String)
+                .map(obj -> (String) obj)
+                .mapToInt(str -> str.length())
+                .summaryStatistics();
+        log(intSummaryStatistics.getMax() - intSummaryStatistics.getMin());
     }
 
     // has small #adjustmemts from ClassicStringTest
