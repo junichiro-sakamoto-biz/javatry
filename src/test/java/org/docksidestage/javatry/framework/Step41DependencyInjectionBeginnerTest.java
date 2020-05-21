@@ -15,8 +15,16 @@
  */
 package org.docksidestage.javatry.framework;
 
+import org.docksidestage.bizfw.basic.objanimal.Animal;
+import org.docksidestage.bizfw.basic.objanimal.Cat;
+import org.docksidestage.bizfw.basic.objanimal.Dog;
+import org.docksidestage.bizfw.basic.supercar.SupercarDealer;
+import org.docksidestage.bizfw.di.cast.TooLazyDog;
+import org.docksidestage.bizfw.di.container.SimpleDiContainer;
 import org.docksidestage.bizfw.di.nondi.NonDiDirectFirstAction;
 import org.docksidestage.bizfw.di.nondi.NonDiDirectSecondAction;
+import org.docksidestage.bizfw.di.usingdi.UsingDiAccessorAction;
+import org.docksidestage.bizfw.di.usingdi.UsingDiAnnotationAction;
 import org.docksidestage.unit.PlainTestCase;
 
 /**
@@ -103,6 +111,25 @@ public class Step41DependencyInjectionBeginnerTest extends PlainTestCase {
     public void test_usingdi_difference_between_Accessor_and_Annotation() {
         // your answer? => 
         // and your confirmation code here freely
+        // UsingDiAccessorActionではsetterからanimalとSupercarDealerを設定している。
+        // UsingDiAnnocationActionではanimalとSupercarDealerにannotationを設定して、注入できるようにしている
+        TooLazyDog dog = new TooLazyDog("tofu");
+        dog.petMe();
+        dog.playWith(new Cat());
+        UsingDiAccessorAction usingDiAccessorAction = new UsingDiAccessorAction();
+        usingDiAccessorAction.setAnimal(dog);
+        usingDiAccessorAction.callFriend();
+
+        SimpleDiContainer simpleDiContainer = SimpleDiContainer.getInstance();
+        simpleDiContainer.registerModule(componentMap -> {
+            componentMap.put(UsingDiAnnotationAction.class, new UsingDiAnnotationAction());
+            componentMap.put(Animal.class, new Dog());
+            componentMap.put(SupercarDealer.class, new SupercarDealer());
+        });
+        simpleDiContainer.resolveDependency();
+        UsingDiAnnotationAction usingDiAnnocationAction = (UsingDiAnnotationAction) simpleDiContainer.getComponent(UsingDiAnnotationAction.class);
+        usingDiAccessorAction.callFriend();
+
     }
 
     /**
