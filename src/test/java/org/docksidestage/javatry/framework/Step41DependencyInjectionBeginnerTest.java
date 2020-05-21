@@ -15,6 +15,8 @@
  */
 package org.docksidestage.javatry.framework;
 
+import org.docksidestage.bizfw.di.nondi.NonDiDirectFirstAction;
+import org.docksidestage.bizfw.di.nondi.NonDiDirectSecondAction;
 import org.docksidestage.unit.PlainTestCase;
 
 /**
@@ -56,6 +58,19 @@ public class Step41DependencyInjectionBeginnerTest extends PlainTestCase {
     public void test_nondi_difference_between_first_and_second() {
         // your answer? => 
         // and your confirmation code here freely
+        // callFriend, wakeupMeで使われているclassがDogとTooLazyDog
+        //
+        // NonDiDirectFirstActionではsupercarDealerのインスタンスをそのまま利用
+        // NonDiDirectSecondActionのgoToOfficeとsendGiftではsuperCarDealerのcreateSupercarManufactor methodoverrideして利用している
+        log("NonDiDirectFirstAction");
+        NonDiDirectFirstAction nonDiDirectFirstAction = new NonDiDirectFirstAction();
+        nonDiDirectFirstAction.callFriend();
+        nonDiDirectFirstAction.wakeupMe();
+
+        log("NonDiDirectSecondAction");
+        NonDiDirectSecondAction nonDiDirectSecondAction = new NonDiDirectSecondAction();
+        nonDiDirectSecondAction.callFriend();
+        nonDiDirectSecondAction.wakeupMe();
     }
 
     /**
