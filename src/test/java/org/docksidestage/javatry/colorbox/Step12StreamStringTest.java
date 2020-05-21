@@ -15,9 +15,11 @@
  */
 package org.docksidestage.javatry.colorbox;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.swing.*;
 
@@ -56,10 +58,14 @@ public class Step12StreamStringTest extends PlainTestCase {
      */
     public void test_length_findMax() {
         List<ColorBox> colorBoxList = new YourPrivateRoom().getColorBoxList();
-        Optional<String> answer = colorBoxList.stream()
-                .map(colorBox -> colorBox.getColor().getColorName())
-                .reduce((s1, s2)->{ return s1.length() > s2.length()? s1: s2;});
-        log(answer.get()); //  => yello
+        String answer = colorBoxList.stream()
+                .flatMap(colorBox -> colorBox.getSpaceList().stream())
+                .map(space->space.getContent())
+                .filter(obj -> obj instanceof String)
+                .map(obj -> (String)obj)
+                .max(Comparator.comparingInt(String::length))
+                .orElse(null);
+        log(answer);
     }
 
     /**
