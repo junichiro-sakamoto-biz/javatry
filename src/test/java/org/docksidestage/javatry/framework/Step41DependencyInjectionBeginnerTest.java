@@ -90,6 +90,7 @@ public class Step41DependencyInjectionBeginnerTest extends PlainTestCase {
     public void test_nondi_difference_between_FactoryMethod_and_IndividualFactory() {
         // your answer? => 
         // and your confirmation code here freely
+        // TooLazyDogとsupercarDealerを生成する処理をさらに別クラス内の関数に切り出している。
     }
 
     // ===================================================================================
